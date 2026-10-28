@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio | Marina Voss</title>
+    <title>Portfolio | Raihanul</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet" />
     <style>
       :root {
-        --bg: #120a12;
-        --bg-deep: #1a0d19;
+        --bg: #0a0a0a;
+        --bg-deep: #111111;
         --panel: #1b0d1a;
         --panel-2: #201016;
         --rose: #eeb7b0;
@@ -22,7 +22,9 @@
         --card: rgba(255, 255, 255, 0.04);
       }
 
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
 
       html {
         scroll-behavior: smooth;
@@ -30,10 +32,7 @@
 
       body {
         margin: 0;
-        background:
-          radial-gradient(circle at 20% 15%, rgba(255, 160, 175, 0.18), transparent 25%),
-          radial-gradient(circle at 80% 20%, rgba(255, 190, 180, 0.12), transparent 20%),
-          var(--bg);
+        background: #000;
         color: var(--text);
         font-family: "Inter", sans-serif;
       }
@@ -60,7 +59,7 @@
       .topbar {
         position: sticky;
         top: 0;
-        z-index: 10;
+        z-index: 20;
         background: rgba(12, 8, 13, 0.45);
         backdrop-filter: blur(10px);
         border-bottom: 1px solid var(--line);
@@ -115,9 +114,9 @@
       .hero {
         position: relative;
         background:
-          linear-gradient(180deg, rgba(0,0,0,0.16), rgba(0,0,0,0.28)),
-          radial-gradient(circle at 50% 25%, rgba(252, 178, 162, 0.38), transparent 28%),
-          linear-gradient(90deg, rgba(0,0,0,0.68), rgba(28,10,15,0.18));
+          radial-gradient(circle at 50% 25%, rgba(255, 255, 255, 0.04), transparent 20%),
+          linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.3)),
+          #000;
         min-height: 760px;
         overflow: hidden;
         padding-top: 20px;
@@ -128,11 +127,11 @@
         position: absolute;
         inset: 0;
         background:
-          linear-gradient(135deg, rgba(255,255,255,0.03), transparent 20%),
+          linear-gradient(135deg, rgba(255,255,255,0.02), transparent 20%),
           repeating-linear-gradient(
             135deg,
-            rgba(255,255,255,0.02),
-            rgba(255,255,255,0.02) 1px,
+            rgba(255,255,255,0.01),
+            rgba(255,255,255,0.01) 1px,
             transparent 1px,
             transparent 6px
           );
@@ -150,6 +149,7 @@
         align-items: center;
         justify-content: center;
         padding-top: 18px;
+        z-index: 1;
       }
 
       .hero-title {
@@ -181,6 +181,7 @@
         line-height: 0.9;
         color: rgba(237, 198, 194, 0.9);
         text-shadow: 2px 2px 18px rgba(0,0,0,0.25);
+        z-index: 1;
       }
 
       .hero-scribble strong {
@@ -188,34 +189,22 @@
         font-weight: 600;
       }
 
-      .hero-portrait-area {
-        position: relative;
-        margin-top: -34px;
-      }
-
-      .portrait-wrap {
-        position: relative;
-        width: min(62vw, 760px);
-        margin: 0 auto;
-        transform: translate3d(0,0,0);
-        transition: transform 0.25s ease-out;
-      }
-
-      .portrait-glow {
+      .hero-visual {
         position: absolute;
-        inset: 14% 18% 10% 18%;
-        background: radial-gradient(circle, rgba(252, 171, 153, 0.45), rgba(252, 171, 153, 0.08) 35%, transparent 62%);
-        filter: blur(38px);
-        z-index: 0;
+        left: 50%;
+        top: 110px;
+        transform: translateX(-50%);
+        z-index: 3;
+        pointer-events: none;
       }
 
-      .portrait-wrap img {
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        object-fit: cover;
-        filter: saturate(0.84) contrast(1.08);
-        animation: breathe 8s ease-in-out infinite;
+      .hero-visual img {
+        width: min(470px, 45vw);
+        height: auto;
+        display: block;
+        object-fit: contain;
+        background: transparent;
+        filter: drop-shadow(0 18px 25px rgba(0,0,0,0.45));
       }
 
       .hero-meta {
@@ -255,6 +244,7 @@
         padding: 10px 14px;
         border-radius: 999px;
         background: rgba(255,255,255,0.04);
+        z-index: 2;
       }
 
       .hero-star {
@@ -264,6 +254,7 @@
         font-size: 34px;
         opacity: 0.82;
         animation: spinSlow 14s linear infinite;
+        z-index: 2;
       }
 
       .work {
@@ -743,6 +734,14 @@
           min-height: 660px;
         }
 
+        .hero-visual {
+          top: 120px;
+        }
+
+        .hero-visual img {
+          width: min(420px, 60vw);
+        }
+
         .hero-meta {
           position: static;
           width: auto;
@@ -779,8 +778,19 @@
           font-size: clamp(4.7rem, 31vw, 9rem);
         }
 
-        .portrait-wrap {
-          width: min(90vw, 580px);
+        .hero-visual {
+          position: relative;
+          left: auto;
+          top: auto;
+          transform: none;
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+          margin-bottom: 20px;
+        }
+
+        .hero-visual img {
+          width: min(320px, 78vw);
         }
 
         .hero-meta h3 {
@@ -815,21 +825,25 @@
       <header class="topbar">
         <div class="container topbar-inner">
           <div class="brand">
-            ART DIRECTOR<br />
-            &amp; BRAND DESIGNER
+            PORTFOLIO<br />
+            RAIHANUL
           </div>
 
           <nav class="nav" aria-label="Main navigation">
-            <a href="#about">Branding</a>
-            <a href="#work">Visual Identity</a>
-            <a href="#process">Art Direction</a>
-            <a href="#contact">Digital</a>
+            <a href="#about">About Me</a>
+            <a href="#work">Project</a>
+            <a href="#skills">Skill</a>
+            <a href="#contact">Contact</a>
           </nav>
         </div>
       </header>
 
       <section class="hero">
         <div class="container hero-inner">
+          <div class="hero-visual reveal">
+            <img src="assets/raihan.png" alt="Raihanul" />
+          </div>
+
           <div class="hero-title-wrap reveal">
             <div class="hero-title">
               <span class="line-break">PORT</span>
@@ -846,22 +860,13 @@
 
           <div class="hero-tag reveal">Selected work</div>
 
-          <div class="hero-portrait-area reveal">
-            <div class="portrait-wrap" id="portraitWrap">
-              <div class="portrait-glow"></div>
-              <img
-                src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80"
-                alt="Portrait"
-              />
-            </div>
-
-            <div class="hero-meta">
-              <h3>Marina Voss</h3>
-              <p>
-                I craft bold visual identities and art-directed experiences that connect
-                brands with culture and people.
-              </p>
-            </div>
+          <div class="hero-meta">
+            <h3>RAIHANUL</h3>
+            <p>
+              Mahasiswa S1 Rekayasa Perangkat Lunak
+              <br />
+              NIM: 2403020031
+            </p>
           </div>
 
           <div class="hero-star reveal">✦</div>
@@ -869,10 +874,10 @@
       </section>
 
       <main class="container">
-        <section class="work reveal" id="work">
+        <section class="work reveal" id="about">
           <div class="section-head">
-            <div class="title">Selected work</div>
-            <div class="right">Brands we’ve helped build and grow</div>
+            <div class="title">About Me</div>
+            <div class="right">Profile</div>
           </div>
 
           <div class="work-grid">
@@ -882,8 +887,8 @@
               </div>
               <div class="work-content">
                 <div class="index">01</div>
-                <h3 class="name">Velvet Hour</h3>
-                <div class="meta">Cocktail Lounge · Brand Identity</div>
+                <h3 class="name">About</h3>
+                <div class="meta">Student · RPL</div>
               </div>
             </article>
 
@@ -893,52 +898,30 @@
               </div>
               <div class="work-content">
                 <div class="index">02</div>
-                <h3 class="name">Aurelia Skincare</h3>
-                <div class="meta">Brand Identity · Packaging</div>
-              </div>
-            </article>
-
-            <article class="work-card">
-              <div class="art-visual">
-                <div class="magazine"></div>
-              </div>
-              <div class="work-content">
-                <div class="index">03</div>
-                <h3 class="name">Nomad Studio</h3>
-                <div class="meta">Brand Identity · Web Experience</div>
-              </div>
-            </article>
-
-            <article class="work-card">
-              <div class="art-visual">
-                <div class="tag"></div>
-              </div>
-              <div class="work-content">
-                <div class="index">04</div>
-                <h3 class="name">Wide Apparel</h3>
-                <div class="meta">Brand Identity · Social Campaign</div>
+                <h3 class="name">Life</h3>
+                <div class="meta">Jakarta · Design</div>
               </div>
             </article>
           </div>
         </section>
 
-        <section class="process reveal" id="process">
+        <section class="process reveal" id="skills">
           <div class="section-head">
-            <div class="title">Brand systems</div>
-            <div class="right">The process</div>
+            <div class="title">About Me</div>
+            <div class="right">Personal</div>
           </div>
 
           <div class="process-grid">
             <div class="panel brand-system">
               <div class="label-row">
-                <span>Logo suite</span>
-                <span>Aurelia</span>
+                <span>Keahlian</span>
+                <span>Skills</span>
               </div>
 
-              <div class="big">Aurelia</div>
+              <div class="big">Creative</div>
 
               <div class="label-row">
-                <span>Color palette</span>
+                <span>Tools & Teknik</span>
               </div>
 
               <div class="swatches">
@@ -950,12 +933,20 @@
 
               <div class="fonts">
                 <div class="font-box">
-                  <strong>Aa</strong>
-                  <span>Display</span>
+                  <strong>HTML</strong>
+                  <span>Web</span>
                 </div>
                 <div class="font-box">
-                  <strong>Aa</strong>
-                  <span>Serif</span>
+                  <strong>CSS</strong>
+                  <span>Style</span>
+                </div>
+                <div class="font-box">
+                  <strong>Photo</strong>
+                  <span>Edit</span>
+                </div>
+                <div class="font-box">
+                  <strong>Video</strong>
+                  <span>Edit</span>
                 </div>
               </div>
             </div>
@@ -965,42 +956,73 @@
                 <div class="step">
                   <div class="num">01</div>
                   <div class="detail">
-                    <strong>Discover</strong>
-                    Deep dive into brand goals, audience and positioning.
+                    <strong>About</strong>
+                    Saya berasal dari Jakarta. Saya menyukai fotografi, videografi, dan desain.
                   </div>
                 </div>
 
                 <div class="step">
                   <div class="num">02</div>
                   <div class="detail">
-                    <strong>Define</strong>
-                    Clarify the strategy and shape the creative direction.
+                    <strong>Hobi</strong>
+                    Hobi saya bermain game, dan saya juga berkuliah di Universitas Darunnajah.
                   </div>
                 </div>
 
                 <div class="step">
                   <div class="num">03</div>
                   <div class="detail">
-                    <strong>Design</strong>
-                    Craft visual systems and compelling brand assets.
+                    <strong>Keahlian</strong>
+                    Keahlian saya membuat portofolio dan juga mengedit video, foto, dan desain.
                   </div>
                 </div>
 
                 <div class="step">
                   <div class="num">04</div>
                   <div class="detail">
-                    <strong>Deliver</strong>
-                    Finalize, refine and prepare for launch.
+                    <strong>Manfaat</strong>
+                    Kegunaannya untuk identitas diri dan juga meningkatkan value diri.
                   </div>
                 </div>
               </div>
 
               <div class="note-card">
                 <p>
-                  Strategy is the soul. Design is the voice.
+                  Kreatif, konsisten, dan siap berkembang.
                 </p>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section class="work reveal" id="work">
+          <div class="section-head">
+            <div class="title">Project</div>
+            <div class="right">Portfolio</div>
+          </div>
+
+          <div class="work-grid">
+            <article class="work-card">
+              <div class="art-visual">
+                <div class="cup"></div>
+              </div>
+              <div class="work-content">
+                <div class="index">01</div>
+                <h3 class="name">Studio Self Photo</h3>
+                <div class="meta">Website Portfolio · HTML</div>
+              </div>
+            </article>
+
+            <article class="work-card">
+              <div class="art-visual">
+                <div class="bottle"></div>
+              </div>
+              <div class="work-content">
+                <div class="index">02</div>
+                <h3 class="name">Event</h3>
+                <div class="meta">Wedding & Event · HTML</div>
+              </div>
+            </article>
           </div>
         </section>
 
@@ -1012,17 +1034,96 @@
           </div>
 
           <div class="contact-box">
-            <div class="mini-title">Get in touch</div>
+            <div class="mini-title">Contact</div>
 
             <div class="contact-list">
-              <a href="mailto:hello@marinavoss.com">hello@marinavoss.com</a>
-              <a href="tel:+1234567890">+1 (234) 567-890</a>
+              <a href="mailto:[email kampus]">[email kampus]</a>
               <a href="#">Instagram</a>
-              <a href="#">LinkedIn</a>
+              <a href="#">Portfolio</a>
+              <a href="#">GitHub</a>
             </div>
 
             <div class="circle">
               <span>Work<br />together</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="process reveal">
+          <div class="section-head">
+            <div class="title">About Website</div>
+            <div class="right">Info</div>
+          </div>
+
+          <div class="process-grid">
+            <div class="panel brand-system">
+              <div class="label-row">
+                <span>Website</span>
+                <span>Portfolio</span>
+              </div>
+
+              <div class="big">GitHub</div>
+
+              <div class="label-row">
+                <span>Project Info</span>
+              </div>
+
+              <div class="fonts">
+                <div class="font-box">
+                  <strong>GitHub</strong>
+                  <span>Source</span>
+                </div>
+                <div class="font-box">
+                  <strong>Pages</strong>
+                  <span>Deploy</span>
+                </div>
+                <div class="font-box">
+                  <strong>Netlify</strong>
+                  <span>Cloud</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel process-panel">
+              <div class="process-list">
+                <div class="step">
+                  <div class="num">01</div>
+                  <div class="detail">
+                    <strong>Source</strong>
+                    Kode website ini disimpan di GitHub.
+                  </div>
+                </div>
+
+                <div class="step">
+                  <div class="num">02</div>
+                  <div class="detail">
+                    <strong>Deploy</strong>
+                    Di-online-kan dengan GitHub Pages dan Netlify.
+                  </div>
+                </div>
+
+                <div class="step">
+                  <div class="num">03</div>
+                  <div class="detail">
+                    <strong>Model</strong>
+                    Model layanan: Self
+                  </div>
+                </div>
+
+                <div class="step">
+                  <div class="num">04</div>
+                  <div class="detail">
+                    <strong>Version</strong>
+                    Versi: 1
+                  </div>
+                </div>
+              </div>
+
+              <div class="note-card">
+                <p>
+                  Built for portfolio showcase and personal branding.
+                </p>
+              </div>
             </div>
           </div>
         </section>
@@ -1041,20 +1142,20 @@
 
       revealItems.forEach((item) => observer.observe(item));
 
-      const portraitWrap = document.getElementById("portraitWrap");
+      const portraitWrap = document.querySelector(".hero-visual");
 
-      document.addEventListener("pointermove", (event) => {
+      window.addEventListener("pointermove", (event) => {
         if (!portraitWrap) return;
 
         const x = (event.clientX / window.innerWidth - 0.5) * 14;
         const y = (event.clientY / window.innerHeight - 0.5) * 14;
 
-        portraitWrap.style.transform = `translate(${x * 0.8}px, ${y * 0.8}px) rotate(${x * 0.2}deg)`;
+        portraitWrap.style.transform = `translate(${x * 0.8}px, ${y * 0.8}px) translateX(-50%) rotate(${x * 0.2}deg)`;
       });
 
-      document.addEventListener("pointerleave", () => {
+      window.addEventListener("pointerleave", () => {
         if (portraitWrap) {
-          portraitWrap.style.transform = "translate(0, 0) rotate(0deg)";
+          portraitWrap.style.transform = "translateX(-50%) rotate(0deg)";
         }
       });
     </script>
